@@ -1,74 +1,49 @@
-# LearnHanamiBlog
+# Notes
 
-This is an Hanami 2 application.
-
-## Local development
-
-## Requirements
-
-The scripts below require [Homebrew][brew] and [asdf][asdf] installed, and
-[asdf added to your shell][asdf-shell].
-
-If you prefer different tools, remove `Brewfile` and `.tool-versions`, and adapt
-the `script/` files (mentioned below) to use your preferred tools.
-
-[brew]: https://brew.sh
-[asdf]: https://asdf-vm.com
-[asdf-shell]: https://asdf-vm.com/#/core-manage-asdf-vm?id=add-to-your-shell
-
-### Installation
-
-After cloning, run:
-
-```
-./script/bootstrap
-```
-
-### Running supporting services
-
-To start the supporting services, run:
-
-```
-./script/support
-```
-
-These must be running before completing the following steps.
-
-### Setup
-
-After the supporting services have started, run:
-
-```
-./script/setup
-```
-
-### After pulling changes
-
-After pulling changes from the remote, run:
-
-```
-./script/update
-```
-
-### Running the app
-
-To run the app:
-
-```
-./script/server
-```
-
-This launches the application processes using [overmind][overmind], which places
-each into a [tmux][tmux] session. You can connect to a specific process to
-interact with it (which is useful when using an interactive debugger inside the
-`web` process):
-
-```
-overmind c web
-```
-
-⚠️ To detatch from the tmux session, use the
-<kbd>ctrl</kbd>+<kbd>b</kbd>,<kbd>d</kbd> shortcut.
-
-[overmind]: https://github.com/DarthSim/overmind
-[tmux]: https://thoughtbot.com/blog/a-tmux-crash-course
+Request - response cycle
+- `/insights/:slug`
+- Routes
+  - Routes are namespaced per slice
+  - `/insights/:slug => "benchmarks.show" => slice/actions/repo/show`
+- Actions
+  - Equivalent to controller actions, but each action gets its own file
+  - Each action explicitly says which view model to use
+    - `include Deps[view: "views.benchmarks.show"]`
+- Views
+  - e.g. `Main::Views::Benchmarks::Show`
+  -Each instance of a view object is a transformation between input parameters and a rendered view
+  - Documentation: DRY View (Hanami View)
+  - It contains the hmtl template to use on the render
+  - It interacts with the `repos` to do any operations
+  - Repos return `Entities` to the `view`
+  - The view`expose`s the variables the html template needs
+  - The exposed variables are `Entities` that have been wrapped / decorated as `View::Parts`
+  - The inferred name of the `View::Part` is based on the `exposure` name, NOT the `Entity` class
+- Repos
+  - e.g. `Main::BenchmarkRepo`
+  - Encapsulate the persistence API for `Benchmarks`.
+  - e.g. create, save, find_by
+  - It defines whether a resource can be created, read, updated or deleted and _how_ that is done.
+  - Repos never return objects with live connections to the database. This forces you to place
+  all your persistence logic in here and expose it to higher levels as methods.
+    - This happens if you materialize your results (`#one`, `#to_a`, `#one!`).
+    - It is _usually_ bad practice not materialize your results.  Some exceptions to this is pagination. 
+  - Repos return `Entities` or `[Entities]`, whose public interface is defined in the corresponding `Entity` class.
+  - Internally, `repos` do their work using `ROM::Relations`.
+  - `ROM` is like Rails' `ActiveRecord` in the sense that it provides chainable, lazy access to the database using
+     just Ruby.
+- Entities
+  - e.g `Main::Entities::Benchmark < CultureFirst::Entities::Benchmark`
+  - They are very close to a PORO.
+  - Each `Entity` represents "a thing".
+  - They are powered by `ROM::Struct`, that automatically gives entities access to their attribues based on 
+  their entity structure (see `Relation`).
+- Relations
+  - e.g.`Persistence::Relations::Benchmarks`
+  - Represents a DB relation (typically maps to 1 table) /  single data source. 
+  - An instance of this carries a live connection to the DB
+  - It is a singleton instance for the lifecycle of the app
+  - TODO: do associations go here? 
+  
+  
+  
