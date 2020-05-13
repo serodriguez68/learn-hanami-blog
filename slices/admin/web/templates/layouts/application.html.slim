@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    title
+      - if content_for :title
+        ==> content_for :title
+        ' /
+      ' LearnHanamiBlog
+    meta name="title" content="LearnHanamiBlog"
+    link rel="stylesheet" type="text/css" href=assets["main__public.css"]
+    script src=assets["main__public.js"] defer=true
+
+  body
+    == yield
