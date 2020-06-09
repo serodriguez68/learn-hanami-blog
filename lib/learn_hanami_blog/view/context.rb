@@ -47,11 +47,11 @@ module LearnHanamiBlog
       private
 
       def request
-        _options.fetch[:request]
+        _options.fetch(:request)
       end
 
       def response
-        _options.fetch[:response]
+        _options.fetch(:response)
       end
     end
   end

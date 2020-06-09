@@ -18,7 +18,7 @@ module LearnHanamiBlog
       # rather than on subclasses via this inherited hook
       klass.include Hanami::Action::Cookies
       klass.include Hanami::Action::Session
-      klass.include Hanami::Action::CSRFProtection
+      # klass.include Hanami::Action::CSRFProtection
     end
 
     # FIXME: make this more easily configurable at the application level

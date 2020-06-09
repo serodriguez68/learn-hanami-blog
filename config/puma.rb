@@ -22,6 +22,9 @@ rackup DefaultRackup
 # Specify the port that Puma will listen on
 port ENV.fetch("PORT") { 3000 }
 
+# Extend timeout for rubymine debugger
+worker_timeout(24*60*60) if ENV.fetch("HANAMI_ENV") == 'development'
+
 # Specify the environment Puma will run in
 environment ENV.fetch("HANAMI_ENV") { "development" }
 
