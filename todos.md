@@ -6,5 +6,7 @@ OK 1. Map out a request response cycle.
 - Associations with ROM and friends
 - Validations
 
-1. Dry auto-inject
-1. Talk on Dry View Rubyconf 2019
+
+1. Deploy to heroku?
+1. Add authentication
+

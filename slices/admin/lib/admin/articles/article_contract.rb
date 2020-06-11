@@ -1,5 +1,4 @@
 require 'admin/validation/contract'
-Dry::Validation.load_extensions(:monads)
 
 module Admin
   module Articles

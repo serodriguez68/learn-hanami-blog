@@ -4,7 +4,7 @@ source "https://rubygems.org/"
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-ruby "2.6.6"
+ruby "2.7.1"
 
 # Application framework
 gem "hanami", github: "hanami/hanami", branch: "unstable"
@@ -22,13 +22,14 @@ gem "rom-factory", github: "rom-rb/rom-factory" # For DB seeds as well as tests
 gem "rom-sql", github: "rom-rb/rom-sql"
 gem "sequel", "4.49"
 gem "sequel_pg", "~> 1.7"
+gem 'bigdecimal', '~> 1.4'
 
 # Application
 gem "dry-matcher", "~> 0.8"
-gem "dry-monads", "~> 1.2"
+gem "dry-monads", "~> 1.3"
 gem "dry-struct", "~> 1.0"
 gem "dry-types", "~> 1.0"
-gem "dry-validation", "~> 1.4"
+gem "dry-validation", "~> 1.5"
 gem "erbse", "~> 0.1"
 gem "i18n", "~> 1.8"
 gem "slim", "~> 4.0"
