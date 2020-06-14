@@ -3,6 +3,7 @@
 
 require "dry/validation"
 require "dry/schema/messages/i18n"
+require "dry/monads"
 
 module LearnHanamiBlog
   module Validation
@@ -16,6 +17,8 @@ end
 Dry::Validation.load_extensions(:monads)
 
 module DryValidationResultMonadExtensions
+  include Dry::Monads[:result]
+
   # Overrides the default behaviour so that all validation failures
   # have the :validation failure code by default.
   # If a more specific failure code is needed, handle it in the object
