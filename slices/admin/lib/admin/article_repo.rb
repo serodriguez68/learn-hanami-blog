@@ -5,7 +5,7 @@ module Admin
     # commands update: :by_pk
 
     def listing
-      articles.to_a
+      articles.combine(:author).to_a
     end
 
     def create(attrs)

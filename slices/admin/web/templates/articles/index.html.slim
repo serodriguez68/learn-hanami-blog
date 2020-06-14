@@ -1,7 +1,9 @@
-h1 Articles!
+h1 Articles Index
 
 - articles.each do |article|
+  h3 = article.title
   p
-    = article.title
-    br
-    = article.slug
+    em =  "By #{article.author.name} -- Slug: #{article.slug}"
+  p = article.body
+  hr
+  br
