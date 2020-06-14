@@ -18,13 +18,6 @@ module Admin
             errors = validation.errors.to_h
             render req, res, attrs: attempted_attrs, errors: errors
           end
-          # # TODO: transfrom this to Dry::Matcher or pattern matching.
-          # if article_result.success?
-          #   res.redirect_to '/admin/articles'
-          # else
-          #   errors = article_result.failure.errors.to_h
-          #   render req, res, article_params: article_result.failure.to_h, errors: errors
-          # end
         end
       end
     end
