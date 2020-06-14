@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hanami/controller
-  revision: fe4c3392282e535096e73a71bdb4d44cca05cc12
+  revision: 2cec414e7a7981fb0beedbea9476bfc62a03d5d1
   branch: unstable
   specs:
     hanami-controller (2.0.0.alpha1)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/hanami
-  revision: 88aa9c9825e42ed9491f994f92245e5dd00264fe
+  revision: 5f958a4bcf8758cee0c0bfc5303d716f78c0c779
   branch: unstable
   specs:
     hanami (2.0.0.alpha1)
@@ -26,10 +26,10 @@ GIT
 
 GIT
   remote: https://github.com/hanami/router
-  revision: 8ccaea059052324f3f6745d253bcfc7b1ca3d8da
+  revision: 10eac67bdb237c2fba1f021e31ea94e7fa7a0fae
   branch: unstable
   specs:
-    hanami-router (2.0.0.alpha2)
+    hanami-router (2.0.0.alpha3)
       mustermann (~> 1.0)
       mustermann-contrib (~> 1.0)
       rack (~> 2.0)
@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/view
-  revision: 520cf4da6aa38c4bcc9fc543dfc8b6693105c220
+  revision: 622c0dd3e79e068353383cbf030d6b86af104577
   branch: master
   specs:
     hanami-view (2.0.0.alpha1)
@@ -375,6 +375,7 @@ DEPENDENCIES
   dry-types (~> 1.0)
   dry-validation (~> 1.5)
   erbse (~> 0.1)
+  faker
   guard-rack (~> 2.2)
   hanami!
   hanami-controller!

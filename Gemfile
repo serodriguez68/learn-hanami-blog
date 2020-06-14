@@ -33,6 +33,7 @@ gem "dry-validation", "~> 1.5"
 gem "erbse", "~> 0.1"
 gem "i18n", "~> 1.8"
 gem "slim", "~> 4.0"
+gem 'faker'
 
 # Development/test
 group :development, :test do

@@ -7,6 +7,7 @@ ROM::SQL.migration do
     create_table :articles do
       primary_key :id
       column :title, :text, null: false
+      column :body, :text, null: false
       column :slug, :text, null: false, unique: true
     end
   end

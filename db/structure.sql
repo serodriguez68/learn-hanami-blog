@@ -27,6 +27,7 @@ SET default_table_access_method = heap;
 CREATE TABLE public.articles (
     id integer NOT NULL,
     title text NOT NULL,
+    body text NOT NULL,
     slug text NOT NULL,
     author_id integer NOT NULL
 );
