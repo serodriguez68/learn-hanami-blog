@@ -12,7 +12,7 @@ form[action='/admin/articles' method="post"]
   div
     label Body
     br
-    textarea[cols='100' rows='30' name="article[body]" value=attrs[:body]]
+    textarea[cols='100' rows='30' name="article[body]"] = attrs[:body]
   br
   div
     label Author ID
