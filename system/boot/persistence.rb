@@ -29,6 +29,9 @@ Hanami.application.register_bootable :persistence, namespace: true do |container
 
     rom_config.plugin(:sql, relations: :auto_restrictions)
 
+    # Enable logging of queries
+    rom_config.gateways[:default].use_logger(Hanami.logger)
+
     register "config", rom_config
     register "db", rom_config.gateways[:default].connection
   end
