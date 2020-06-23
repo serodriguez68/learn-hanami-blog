@@ -1,27 +1,2 @@
 h1 Create a new article
-
-- if errors.size != 0
-  p = errors
-
-form[action='/admin/articles' method="post"]
-  div
-    label Title
-    br
-    input[type='text' autofocus='true' name="article[title]" value=attrs[:title]]
-  br
-  div
-    label Body
-    br
-    textarea[cols='100' rows='30' name="article[body]"] = attrs[:body]
-  br
-  div
-    label Author ID
-    br
-    input[type="number" name="article[author_id]" value=attrs[:author_id]]
-
-  / br
-  /   label CSFR token
-    / input[type="text" name="_csrf_token" value=csrf_token]
-    / input[type="text" name="_csrf_token" value="09d9273e955c5579184378ab55bc80ccc3a51139967c2680698eb4770c7cc11c" ]
-  br
-  input[type="submit"]
+== render 'form', path: '/admin/articles', errors: errors, attrs: attrs

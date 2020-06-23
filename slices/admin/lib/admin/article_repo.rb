@@ -2,7 +2,7 @@ require "admin/repository"
 
 module Admin
   class ArticleRepo < Repository[:articles]
-    # commands update: :by_pk
+
 
     def listing
       articles.combine(:author).to_a
@@ -13,9 +13,15 @@ module Admin
       articles.changeset(:create, **attrs, slug: slug).commit
     end
 
-    def update(id, attrs)
+    def [](id)
+      articles.by_pk(id).one
+    end
+
+    # To update we can either use a pre-made command or declare one explicitly
+    # commands update: :by_pk
+    def update(id:, attrs:)
       articles.by_pk(id).changeset(:update, attrs).commit
-      # super(id, attrs) # alternative using command (no need to declare it explictly)
+      # super(id, attrs) # alternative using pre-made command
     end
 
     private

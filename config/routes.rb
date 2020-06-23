@@ -6,8 +6,11 @@ Hanami.application.routes do
   end
 
   slice :admin, at: "/admin" do
-    get "articles", to: "articles.index"
-    get "articles/new", to: "articles.new"
+    # Articles
+    get  "articles", to: "articles.index"
+    get  "articles/new", to: "articles.new"
     post "articles", to: "articles.create"
+    get  'articles/:id/edit', to: 'articles.edit'
+    post 'articles/:id/update', to: 'articles.update'
   end
 end

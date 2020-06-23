@@ -5,5 +5,6 @@ h1 Articles Index
   p
     em =  "By #{article.author.name} -- Slug: #{article.slug}"
   p = article.body
+  a[href="/admin/articles/#{article.id}/edit"] Edit this article
   hr
   br
